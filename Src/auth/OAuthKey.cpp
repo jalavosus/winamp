@@ -1,10 +1,10 @@
 #include "OAuthKey.h"
 #include "b64.h"
 
-OAuthKey::OAuthKey(const void *key, size_t key_len)
+OAuthKey::OAuthKey(const void *oauth_key, size_t key_len)
 {
 	HMAC_SHA256_Init(&ctx);
-	HMAC_SHA256_UpdateKey(&ctx, (unsigned char *)key, (int)key_len);
+	HMAC_SHA256_UpdateKey(&ctx, (unsigned char *)oauth_key, (int)key_len);
 	HMAC_SHA256_EndKey(&ctx);
 	HMAC_SHA256_StartMessage(&ctx);
 }
